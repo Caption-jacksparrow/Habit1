@@ -49,20 +49,9 @@ android {
         versionName flutterVersionName
     }
 
-    signingConfigs {
-        release {
-            if (System.getenv("ANDROID_KEYSTORE_PATH")) {
-                storeFile file(System.getenv("ANDROID_KEYSTORE_PATH"))
-                storePassword System.getenv("ANDROID_KEYSTORE_PASSWORD")
-                keyAlias System.getenv("ANDROID_KEY_ALIAS")
-                keyPassword System.getenv("ANDROID_KEY_PASSWORD")
-            }
-        }
-    }
-
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            // Removed signingConfig block
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
