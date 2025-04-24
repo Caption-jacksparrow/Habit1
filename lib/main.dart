@@ -1,38 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'injection/injection_container.dart' as di;
-import 'presentation/pages/home_page.dart';
-import 'core/theme/app_theme.dart';
-import 'core/utils/performance_optimizer.dart';
-import 'core/utils/accessibility_helper.dart';
-import 'core/utils/analytics_helper.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await di.initDependencies();
-  
-  // Initialize performance optimizations
-  PerformanceOptimizer.initialize();
-  
-  // Initialize accessibility features
-  AccessibilityHelper.initialize();
-  
-  // Initialize analytics
-  AnalyticsHelper.initialize();
-  
-  runApp(const HabituneApp());
+void main() {
+  runApp(const MyApp());
 }
 
-class HabituneApp extends StatelessWidget {
-  const HabituneApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Habitune',
-      theme: AppTheme.getLightTheme(),
-      home: const HomePage(),
-      debugShowCheckedModeBanner: false, // Remove debug banner for production
+      title: 'HabitTune',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('HabitTune'),
+      ),
+      body: const Center(
+        child: Text('Welcome to HabitTune!'),
+      ),
     );
   }
 }
